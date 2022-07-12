@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "public"),
     filename: "bundle.js",
@@ -20,10 +20,11 @@ module.exports = {
         use: ["style-loader", "css-loader", "less-loader", "postcss-loader"],
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js)$/,
         exclude: /node_modules/,
         use: "babel-loader",
       },
+      { test: /\.ts|tsx$/, exclude: /node_modules/, use: "ts-loader" },
     ],
   },
   resolve: {
