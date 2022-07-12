@@ -1,17 +1,18 @@
 import * as React from "react";
 import CurrencyConverter from "components/currencyConverter/CurrencyConverter";
-import Rates from "components/rates/Rates";
+import ExchangeRates from "components/exchangeRates/ExchangeRates";
+import { RouteObject } from "react-router-dom";
 
 const appRoutes = [
   {
-    to: "converter",
+    path: "converter",
     label: "Currency Converter",
     element: <CurrencyConverter />,
   },
   {
-    to: "rates",
+    path: "rates",
     label: "Rates",
-    element: <Rates />,
+    element: <ExchangeRates />,
   },
 ];
 

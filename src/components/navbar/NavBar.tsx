@@ -10,7 +10,9 @@ interface iNavBarItem {
 
 const NavBarItem: React.FC<iNavBarItem> = ({ to, label }) => (
   <li>
-    <NavLink to={to}>{label}</NavLink>
+    <NavLink to={to} className={({ isActive }) => isActive && "active"}>
+      <p>{label}</p>
+    </NavLink>
   </li>
 );
 
@@ -18,8 +20,8 @@ const NavBar = () => {
   return (
     <div className="navbar-container">
       <ul>
-        {appRoutes.map((route) => (
-          <NavBarItem to={route.to} label={route.label} />
+        {appRoutes.map(({ path, label }) => (
+          <NavBarItem to={path} label={label} key={label} />
         ))}
       </ul>
       <Outlet />

@@ -1,5 +1,12 @@
 .navbar-container {
   ul {
-    @apply border;
+    @apply flex justify-center mt-6;
+    p {
+      @apply p-6 transition-all hover:cursor-pointer hover:-translate-y-1 font-bold;
+    }
+  }
+
+  .active {
+    @apply underline;
   }
 }
