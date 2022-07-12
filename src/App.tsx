@@ -1,9 +1,8 @@
 import * as React from "react";
-import Router from "./components/routes";
+import AppRouter from "./components/AppRouter";
 
 const App = () => {
-  console.log(process.env.NODE_ENV);
-  return <Router />;
+  return <AppRouter />;
 };
 
 export default App;

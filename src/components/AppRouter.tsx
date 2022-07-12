@@ -1,8 +1,12 @@
 import * as React from "react";
-import { useRoutes } from "react-router-dom";
+import { useRoutes, Navigate } from "react-router-dom";
 
-const Router = () => {
+const AppRouter = () => {
   let routes = useRoutes([
+    {
+      path: "/",
+      element: <Navigate to="converter" />,
+    },
     {
       path: "converter",
       element: <h1>Converter</h1>,
@@ -13,4 +17,4 @@ const Router = () => {
   return routes;
 };
 
-export default Router;
+export default AppRouter;
