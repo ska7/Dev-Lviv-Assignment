@@ -3,7 +3,7 @@
   "include": ["src/**/*"],
   "exclude": ["node_modules"],
   "compilerOptions": {
-    "outDir": "./public/",
+    "outDir": "static",
     "sourceMap": true,
     "noImplicitAny": true,
     "module": "es6",
