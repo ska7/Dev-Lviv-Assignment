@@ -1,17 +1,20 @@
 import * as React from "react";
 import { useRoutes, Navigate } from "react-router-dom";
+import NavBar from "./navbar/NavBar";
 
 const AppRouter = () => {
-  let routes = useRoutes([
+  const routes = useRoutes([
     {
       path: "/",
-      element: <Navigate to="converter" />,
+      element: <NavBar />,
+      children: [
+        {
+          path: "converter",
+          element: <h1>Converter</h1>,
+        },
+        { path: "rates", element: <h1>Rates</h1> },
+      ],
     },
-    {
-      path: "converter",
-      element: <h1>Converter</h1>,
-    },
-    { path: "rates", element: <h1>Rates</h1> },
   ]);
 
   return routes;

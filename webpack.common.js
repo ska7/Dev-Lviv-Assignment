@@ -33,6 +33,9 @@ module.exports = {
     extensions: [".jsx", ".ts", ".tsx", ".js", ".less"],
     alias: {
       components: path.resolve(__dirname, "src/components"),
+      utils: path.resolve(__dirname, "src/utils"),
+      hooks: path.resolve(__dirname, "src/hooks"),
+      selectors: path.resolve(__dirname, "src/selectors"),
     },
   },
   plugins: [

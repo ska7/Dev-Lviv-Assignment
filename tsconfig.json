@@ -10,6 +10,13 @@
     "target": "es5",
     "jsx": "react",
     "allowJs": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "baseUrl": "src",
+    "paths": {
+      "components": ["components/*"],
+      "utils": ["utils/*"],
+      "hooks": ["hooks/*"],
+      "selectors": ["selectors/*"]
+    }
   }
 }
