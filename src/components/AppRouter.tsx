@@ -2,13 +2,13 @@ import ExchangeRates from "components/exchangeRates/ExchangeRates";
 import CurrencyConverter from "components/currencyConverter/CurrencyConverter";
 import * as React from "react";
 import { Navigate, useRoutes } from "react-router-dom";
-import NavBar from "./navbar/NavBar";
+import AppHeader from "components/appHeader/AppHeader";
 
 const AppRouter = () => {
   const routes = useRoutes([
     {
       path: "/",
-      element: <NavBar />,
+      element: <AppHeader />,
       children: [
         {
           path: "/",

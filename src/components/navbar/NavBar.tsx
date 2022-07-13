@@ -1,6 +1,6 @@
 import * as React from "react";
-import { NavLink, Outlet } from "react-router-dom";
-import appRoutes from "utils/routes";
+import { NavLink } from "react-router-dom";
+import navRoutes from "utils/navRoutes";
 import "./navBar.less";
 
 interface iNavBarItem {
@@ -10,7 +10,7 @@ interface iNavBarItem {
 
 const NavBarItem: React.FC<iNavBarItem> = ({ to, label }) => (
   <li>
-    <NavLink to={to} className={({ isActive }) => isActive && "active"}>
+    <NavLink to={to} className={({ isActive }) => (isActive ? "active" : "")}>
       <p>{label}</p>
     </NavLink>
   </li>
@@ -18,14 +18,13 @@ const NavBarItem: React.FC<iNavBarItem> = ({ to, label }) => (
 
 const NavBar = () => {
   return (
-    <div className="navbar-container">
-      <ul>
-        {appRoutes.map(({ path, label }) => (
+    <nav>
+      <ul className="navbar-container">
+        {navRoutes.map(({ path, label }) => (
           <NavBarItem to={path} label={label} key={label} />
         ))}
       </ul>
-      <Outlet />
-    </div>
+    </nav>
   );
 };
 

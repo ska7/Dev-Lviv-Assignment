@@ -3,12 +3,7 @@ import AppRouter from "./components/AppRouter";
 import NavBar from "./components/navbar/NavBar";
 
 const App = () => {
-  return (
-    <>
-      {/* <NavBar /> */}
-      <AppRouter />
-    </>
-  );
+  return <AppRouter />;
 };
 
 export default App;

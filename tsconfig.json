@@ -1,22 +1,22 @@
 {
-  "compileOnSave": true,
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"],
-  "compilerOptions": {
-    "outDir": "static",
-    "sourceMap": true,
-    "noImplicitAny": true,
-    "module": "es6",
-    "target": "es5",
-    "jsx": "react",
-    "allowJs": true,
-    "moduleResolution": "node",
-    "baseUrl": "src",
-    "paths": {
-      "components": ["components/*"],
-      "utils": ["utils/*"],
-      "hooks": ["hooks/*"],
-      "selectors": ["selectors/*"]
+    "compileOnSave": true,
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"],
+    "compilerOptions": {
+        "outDir": "static",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "es6",
+        "target": "es5",
+        "jsx": "react",
+        "allowJs": true,
+        "moduleResolution": "node",
+        "baseUrl": "src",
+        "paths": {
+            "components": ["components/*"],
+            "utils": ["utils/*"],
+            "hooks": ["hooks/*"],
+            "selectors": ["selectors/*"]
+        }
     }
-  }
 }

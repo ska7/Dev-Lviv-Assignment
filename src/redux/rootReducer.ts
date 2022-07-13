@@ -1,23 +1,27 @@
-import { AnyAction } from "redux";
-import { SET_BASE_CURRENCY } from "./actionTypes";
+import { AnyAction } from 'redux'
+import { Currency } from 'types'
+import { SET_BASE_CURRENCY } from './actionTypes'
 
 interface RootReducer {
-  baseCurrency: string;
+    baseCurrency: Currency
 }
 
 const initState: RootReducer = {
-  baseCurrency: "",
-};
+    baseCurrency: {
+        name: 'USD',
+        symbol: '$',
+    },
+}
 
 const rootReducer = (state = initState, action: AnyAction) => {
-  const { type, payload } = action;
-  switch (type) {
-    case SET_BASE_CURRENCY:
-      return { ...state, baseCurrency: payload };
+    const { type, payload } = action
+    switch (type) {
+        case SET_BASE_CURRENCY:
+            return { ...state, baseCurrency: payload }
 
-    default:
-      return state;
-  }
-};
+        default:
+            return state
+    }
+}
 
-export default rootReducer;
+export default rootReducer

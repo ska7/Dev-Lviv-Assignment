@@ -1,0 +1,31 @@
+.currency-menu-container {
+  @apply absolute flex flex-col left-5 inline-block text-left;
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  .menu-button {
+    @apply inline-flex justify-center w-32 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700;
+
+    svg {
+      @apply -mr-1 ml-2 h-5 w-5;
+    }
+  }
+
+  label {
+    @apply text-xs;
+  }
+
+  .currency-menu-options {
+    @apply absolute left-0 top-14 mt-2 w-full rounded-md shadow-2xl bg-white focus:outline-none h-80 overflow-y-scroll overflow-x-hidden;
+
+    .currency-menu-option {
+      @apply text-gray-700 px-4 py-2 text-xs flex justify-between h-auto w-full;
+      span {
+      }
+
+      p {
+      }
+    }
+  }
+}

@@ -2,5 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.app {
+.app-header {
+  @apply h-11;
 }
