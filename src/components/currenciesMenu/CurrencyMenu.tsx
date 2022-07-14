@@ -36,14 +36,12 @@ const MenuOption: React.FC<iCurrencyMenuOption> = ({
     isSelected,
     handleOptionClick,
 }) => {
+    const optionCls = `currency-menu-option ${isSelected ? 'selected' : ''}`;
     return (
         <button
-            role="option"
-            value={option}
-            aria-selected={isSelected}
             type="button"
             onClick={() => handleOptionClick({ name: option, symbol })}
-            className="currency-menu-option"
+            className={optionCls}
         >
             <span>{symbol}</span>
             <p>{option}</p>
@@ -54,7 +52,7 @@ const MenuOption: React.FC<iCurrencyMenuOption> = ({
 interface iCurrencyMenuOptions {
     currencies: { abbreviation: string; symbol: string }[];
     showMenu: boolean;
-    selectedCurrency: string;
+    selectedCurrency: Currency;
     handleOptionClick: (currency: Currency) => void;
 }
 
@@ -72,6 +70,11 @@ const MenuOptions: React.FC<iCurrencyMenuOptions> = ({
         } = e;
         setSearchValue(value);
     };
+
+    const onOptionClick = (currency: Currency) => {
+        setSearchValue('');
+        handleOptionClick(currency);
+    };
     return showMenu ? (
         <div className="currency-menu-options">
             <input
@@ -87,7 +90,7 @@ const MenuOptions: React.FC<iCurrencyMenuOptions> = ({
                         abbreviation.includes(searchValue.toUpperCase())
                     )
                     .map(({ abbreviation, symbol }) => {
-                        const isSelected = selectedCurrency === abbreviation;
+                        const isSelected = selectedCurrency.name === abbreviation;
 
                         return (
                             <MenuOption
@@ -95,7 +98,7 @@ const MenuOptions: React.FC<iCurrencyMenuOptions> = ({
                                 option={abbreviation}
                                 symbol={symbol}
                                 isSelected={isSelected}
-                                handleOptionClick={handleOptionClick}
+                                handleOptionClick={onOptionClick}
                             />
                         );
                     })}
