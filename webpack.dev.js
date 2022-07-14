@@ -13,6 +13,7 @@ module.exports = merge(common, {
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify('development'),
+                APILAYER_API_KEY: JSON.stringify('lWRSnQVNHgJBrG9bignCoo6QQvgZ9tsZ'),
             },
         }),
     ],
