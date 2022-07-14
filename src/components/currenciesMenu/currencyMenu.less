@@ -4,8 +4,11 @@
         width: 0px;
     }
 
+    label {
+        @apply flex justify-center p-2;
+    }
     .menu-button {
-        @apply inline-flex justify-center w-32 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700;
+        @apply shadow-2xl inline-flex justify-center w-32 rounded-md border border-gray-300 px-4 py-2 bg-white text-sm font-medium text-gray-700;
 
         svg {
             @apply -mr-1 ml-2 h-5 w-5;
@@ -17,14 +20,22 @@
     }
 
     .currency-menu-options {
-        @apply absolute left-0 top-14 mt-2 w-full rounded-md shadow-2xl bg-white focus:outline-none h-80 overflow-y-scroll overflow-x-hidden;
+        @apply absolute left-0 top-20 mt-2 w-full;
 
-        .currency-menu-option {
-            @apply text-gray-700 px-4 py-2 text-xs flex justify-between h-auto w-full;
-            span {
-            }
+        input {
+            @apply pl-3 pb-2 text-sm focus:outline-none border-b-2 w-full bg-transparent;
+        }
 
-            p {
+        ul {
+            @apply rounded-md shadow-2xl bg-white focus:outline-none max-h-80 overflow-y-scroll overflow-x-hidden;
+
+            .currency-menu-option {
+                @apply text-gray-700 px-4 py-2 text-xs flex justify-between h-auto w-full;
+                span {
+                }
+
+                p {
+                }
             }
         }
     }

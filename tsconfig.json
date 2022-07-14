@@ -16,7 +16,8 @@
             "components": ["components/*"],
             "utils": ["utils/*"],
             "hooks": ["hooks/*"],
-            "selectors": ["selectors/*"]
+            "selectors": ["selectors/*"],
+            "icons": ["assets/icons/*"]
         }
     }
 }

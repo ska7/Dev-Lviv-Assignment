@@ -27,15 +27,20 @@ module.exports = {
                 use: 'babel-loader',
             },
             { test: /\.ts|tsx$/, exclude: /node_modules/, use: 'ts-loader' },
+            {
+                test: /\.svg$/,
+                use: ['@svgr/webpack'],
+            },
         ],
     },
     resolve: {
-        extensions: ['.jsx', '.ts', '.tsx', '.js', '.less'],
+        extensions: ['.jsx', '.ts', '.tsx', '.js', '.less', '.svg'],
         alias: {
             components: path.resolve(__dirname, 'src/components'),
             utils: path.resolve(__dirname, 'src/utils'),
             hooks: path.resolve(__dirname, 'src/hooks'),
             selectors: path.resolve(__dirname, 'src/selectors'),
+            icons: path.resolve(__dirname, 'src/assets/icons'),
         },
     },
     plugins: [

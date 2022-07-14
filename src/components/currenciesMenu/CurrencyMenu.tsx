@@ -5,6 +5,7 @@ import { getBaseCurrency } from 'selectors/selectors';
 import currenciesEnum from 'utils/currenciesEnum';
 import { setBaseCurrencyAction } from '../../redux/actions';
 import { Currency } from 'types';
+import DownArrowIcon from 'icons/menu-arrow.svg';
 import './currencyMenu.less';
 
 interface iCurrencyMenuButton {
@@ -17,17 +18,7 @@ const MenuButton: React.FC<iCurrencyMenuButton> = ({ selectedCurrency, toggleMen
         <button type="button" className="menu-button" onClick={toggleMenu}>
             <span>{selectedCurrency.symbol}</span>
             <p>{selectedCurrency.name}</p>
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-            >
-                <path
-                    fillRule="evenodd"
-                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                />
-            </svg>
+            <DownArrowIcon />
         </button>
     );
 };
@@ -72,25 +63,46 @@ const MenuOptions: React.FC<iCurrencyMenuOptions> = ({
     showMenu,
     selectedCurrency,
     handleOptionClick,
-}) =>
-    showMenu ? (
-        <ul className="currency-menu-options" role="listbox">
-            {/* TODO: Implement search on key stroke */}
-            {currencies.map(({ abbreviation, symbol }) => {
-                const isSelected = selectedCurrency === abbreviation;
+}) => {
+    const [searchValue, setSearchValue] = useState('');
 
-                return (
-                    <MenuOption
-                        key={symbol.concat(abbreviation)}
-                        option={abbreviation}
-                        symbol={symbol}
-                        isSelected={isSelected}
-                        handleOptionClick={handleOptionClick}
-                    />
-                );
-            })}
-        </ul>
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const {
+            target: { value },
+        } = e;
+        setSearchValue(value);
+    };
+    return showMenu ? (
+        <div className="currency-menu-options">
+            <input
+                value={searchValue}
+                onChange={handleInputChange}
+                placeholder="Search by code"
+                maxLength={3}
+                autoFocus
+            />
+            <ul>
+                {currencies
+                    .filter(({ abbreviation }) =>
+                        abbreviation.includes(searchValue.toUpperCase())
+                    )
+                    .map(({ abbreviation, symbol }) => {
+                        const isSelected = selectedCurrency === abbreviation;
+
+                        return (
+                            <MenuOption
+                                key={symbol.concat(abbreviation)}
+                                option={abbreviation}
+                                symbol={symbol}
+                                isSelected={isSelected}
+                                handleOptionClick={handleOptionClick}
+                            />
+                        );
+                    })}
+            </ul>
+        </div>
     ) : null;
+};
 
 export const CurrencyMenu = () => {
     const [showMenu, setShowMenu] = useState(false);
@@ -106,6 +118,7 @@ export const CurrencyMenu = () => {
 
     return (
         <div className="currency-menu-container">
+            <label>Base Currency</label>
             <MenuButton selectedCurrency={baseCurrency} toggleMenu={toggleMenu} />
             <MenuOptions
                 currencies={currenciesEnum}
